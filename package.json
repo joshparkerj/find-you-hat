@@ -5,7 +5,15 @@
   "main": "main.js",
   "author": "Codecademy",
   "license": "ISC",
+  "scripts": {
+    "start": "node main.js"
+  },
   "dependencies": {
     "prompt-sync": "^4.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
   }
 }
