@@ -11,7 +11,6 @@ class Field {
     const fieldLength = height * width;
     const holes = Math.round(fieldLength * (percentage / 100));
     const fields = fieldLength - holes - 2;
-    console.log(fieldLength, holes, fields);
     const shuffle = (arr) => {
       const swap = (i, j) => {
         const temp = arr[i];
@@ -29,7 +28,7 @@ class Field {
       return arr;
     };
 
-    const linearField = [Field.pat].concat(shuffle([...`${Field.hat}${Field.hol.repeat(holes)}${Field.fie.repeat(fields)}`]));
+    const linearField = shuffle([...`${Field.pat}${Field.hat}${Field.hol.repeat(holes)}${Field.fie.repeat(fields)}`]);
     const field = [];
     for (let i = 0; i < linearField.length; i += 1) {
       if (i % width === 0) {
@@ -45,8 +44,12 @@ class Field {
   constructor(field) {
     if (Array.isArray(field)) {
       this.field = field;
-      this.x = 0;
-      this.y = 0;
+      this.field.forEach((row, i) => row.forEach((cell, j) => {
+        if (cell === Field.pat) {
+          this.x = j;
+          this.y = i;
+        }
+      }));
     }
   }
 

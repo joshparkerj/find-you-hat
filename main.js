@@ -1,19 +1,6 @@
 const prompt = require('prompt-sync')({ sigint: true });
 const Field = require('./field');
 
-// const {
-//   pat, fie, hol, hat,
-// } = Field;
-
-// const field = new Field([
-//   [pat, fie, hol, fie, hol, fie, fie],
-//   [fie, fie, fie, fie, fie, fie, fie],
-//   [hol, fie, fie, fie, fie, fie, hol],
-//   [fie, fie, fie, hol, hol, fie, hol],
-//   [fie, fie, hol, fie, fie, hol, hol],
-//   [fie, fie, fie, fie, hat, fie, hol],
-// ]);
-
 const field = Field.generateField(10, 10);
 
 let gameOn = true;
@@ -29,5 +16,7 @@ while (gameOn) {
     gameOn = field.right();
   } else if (input === 'l') {
     gameOn = field.left();
+  } else {
+    console.log('allowed inputs: u, d, l, r (for up, down, left, and right)');
   }
 }
